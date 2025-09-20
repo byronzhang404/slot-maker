@@ -47,7 +47,7 @@ export const HomePage: React.FC = () => {
               Create Custom Slot Machine
             </Link>
             <Link
-              to="/explore"
+              to="/game/0b68392b-df3f-43dd-97d6-959a4d4dd089"
               className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-50 transition-all border-2 border-indigo-600"
             >
               <Dices className="w-6 h-6" />
