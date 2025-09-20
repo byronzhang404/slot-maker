@@ -22,14 +22,9 @@ export const initGA = () => {
     gtag('js', new Date());
     gtag('config', '${GA_TRACKING_ID}');
   `;
-
-  const script3 = document.createElement('script');
-  script3.async = true;
-  script3.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8944923126661523`;
   
   document.head.appendChild(script1);
   document.head.appendChild(script2);
-  document.head.appendChild(script3);
 };
 
 // Hook to track page views
