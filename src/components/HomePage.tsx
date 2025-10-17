@@ -243,6 +243,21 @@ export const HomePage: React.FC = () => {
           
           <div className="text-center text-gray-600 border-t border-gray-200 pt-8">
             <p>Create your custom slot machine today - it's free and no registration required!</p>
+            <p className="mt-4">
+              <Link 
+                to="/privacy-policy" 
+                className="text-indigo-600 hover:text-indigo-800 underline"
+              >
+                Privacy Policy
+              </Link>
+              <span className="mx-2">|</span>
+              <Link 
+                to="/terms-of-service" 
+                className="text-indigo-600 hover:text-indigo-800 underline"
+              >
+                Terms of Service
+              </Link>
+            </p>
           </div>
         </div>
       </footer>
