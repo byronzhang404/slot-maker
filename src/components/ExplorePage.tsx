@@ -41,7 +41,12 @@ export const ExplorePage: React.FC = () => {
 
       if (fetchError) throw fetchError;
       
-      setGames(data || []);
+      // Remove duplicates by id
+      const uniqueGames = (data || []).filter((game, index, self) =>
+        index === self.findIndex((g) => g.id === game.id)
+      );
+      
+      setGames(uniqueGames);
     } catch (err) {
       console.error('Error fetching games:', err);
       setError('Failed to load games. Please try again.');
