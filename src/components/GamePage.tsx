@@ -71,6 +71,9 @@ export const GamePage: React.FC = () => {
           <SlotMachine slots={game.slots} />
         </div>
 
+        {/* Adsterra Ad Container */}
+        <div   id="container-0b09c070b271987dd52a22bb8744c628"  />
+
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {game.slots.map((slot, index) => (
             <div key={index} className="bg-white rounded-xl shadow-md p-6">
@@ -89,14 +92,6 @@ export const GamePage: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Adsterra Ad Container */}
-        <div className="mt-12 flex justify-center">
-          <div 
-            id="container-0b09c070b271987dd52a22bb8744c628"
-            className="w-full max-w-md"
-          />
         </div>
       </div>
     </div>

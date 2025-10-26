@@ -7,11 +7,13 @@ import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import { ExplorePage } from './components/ExplorePage';
 import { Analytics } from './components/Analytics';
+import { FixedAdDiv } from './components/FixedAdDiv';
 
 function App() {
   return (
     <Router>
       <Analytics />
+      <FixedAdDiv />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreateGame />} />
