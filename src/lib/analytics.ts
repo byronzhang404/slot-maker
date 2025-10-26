@@ -53,3 +53,17 @@ export const initAdsterra = () => {
   //script.async = true;
   document.head.appendChild(script);
 };
+
+// Initialize Adsterra
+export const initAdsterraSocialBar = () => {
+  // Check if script is already loaded
+  if (document.querySelector('script[src*="effectivegatecpm.com"]')) {
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = '//devolutionsingclone.com/28/a9/24/28a9242d82313b7493914cf48b8dd5f3.js';
+  //script.async = true;
+  document.head.appendChild(script);
+};
