@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SlotMachine } from './SlotMachine';
 import { useGame } from '../hooks/useGame';
@@ -10,6 +10,17 @@ import { Home } from 'lucide-react';
 export const GamePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { game, loading, error, retryLoading } = useGame(id);
+
+  useEffect(() => {
+    // Load Adsterra script for game detail page
+    if (!document.querySelector('script[src*="devolutionsingclone.com"]')) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      script.src = '//devolutionsingclone.com/0b09c070b271987dd52a22bb8744c628/invoke.js';
+      document.head.appendChild(script);
+    }
+  }, []);
 
   if (loading) {
     return (
@@ -80,6 +91,14 @@ export const GamePage: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Adsterra Ad Container */}
+        <div className="mt-12 flex justify-center">
+          <div 
+            id="container-0b09c070b271987dd52a22bb8744c628"
+            className="w-full max-w-md"
+          />
         </div>
       </div>
     </div>
