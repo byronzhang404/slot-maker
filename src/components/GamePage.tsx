@@ -13,13 +13,11 @@ export const GamePage: React.FC = () => {
 
   useEffect(() => {
     // Load Adsterra script for game detail page
-    if (!document.querySelector('script[src*="devolutionsingclone.com"]')) {
-      const script = document.createElement('script');
-      script.async = true;
-      script.setAttribute('data-cfasync', 'false');
-      script.src = '//devolutionsingclone.com/0b09c070b271987dd52a22bb8744c628/invoke.js';
-      document.head.appendChild(script);
-    }
+    const script = document.createElement('script');
+    script.async = true;
+    script.setAttribute('data-cfasync', 'false');
+    script.src = '//devolutionsingclone.com/0b09c070b271987dd52a22bb8744c628/invoke.js';
+    document.head.appendChild(script);
   }, []);
 
   if (loading) {
