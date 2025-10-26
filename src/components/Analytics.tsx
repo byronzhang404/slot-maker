@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { initGA, usePageTracking, initAdsterra } from '../lib/analytics';
+import { initGA, usePageTracking ,initAdsterraSocialBar} from '../lib/analytics';
 
 export const Analytics: React.FC = () => {
   useEffect(() => {
     initGA();
-    initAdsterra();
+    //initAdsterra();
+    initAdsterraSocialBar();
   }, []);
 
   usePageTracking();
