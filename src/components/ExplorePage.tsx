@@ -71,32 +71,34 @@ export const ExplorePage: React.FC = () => {
         canonicalPath="/explore"
       />
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">
+        <div className="text-center mb-6 sm:mb-12">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-3 sm:mb-6">
             Explore All Slot Machines
           </h1>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mb-4 sm:mb-8 px-4">
             Discover amazing slot machines created by our community
           </p>
           
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <button
               onClick={handleRefresh}
               disabled={loading}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto min-w-[200px]"
             >
-              <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-              {loading ? 'Refreshing...' : 'Refresh Games'}
+              <RefreshCw className={`w-4 h-4 sm:w-5 sm:h-5 ${loading ? 'animate-spin' : ''}`} />
+              <span className="hidden sm:inline">{loading ? 'Refreshing...' : 'Refresh Games'}</span>
+              <span className="sm:hidden">{loading ? 'Loading...' : 'Refresh'}</span>
             </button>
             <button
               onClick={() => navigate('/')}
-              className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-50 transition-all border-2 border-indigo-600"
+              className="inline-flex items-center justify-center gap-2 bg-white text-indigo-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-indigo-50 transition-all border-2 border-indigo-600 w-full sm:w-auto min-w-[200px]"
             >
-              <Home className="w-5 h-5" />
-              Back to Home
+              <Home className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="hidden sm:inline">Back to Home</span>
+              <span className="sm:hidden">Home</span>
             </button>
           </div>
         </div>
@@ -137,44 +139,44 @@ export const ExplorePage: React.FC = () => {
 
         {/* Games Grid */}
         {!loading && !error && games.length > 0 && (
-          <div className="mb-8 text-sm text-gray-600 text-center">
+          <div className="mb-4 sm:mb-8 text-xs sm:text-sm text-gray-600 text-center px-2">
             Showing {games.length} random games
           </div>
         )}
         
         {!loading && !error && games.length > 0 && (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {games.map(game => (
               <div 
                 key={game.id} 
                 onClick={() => navigate(`/game/${game.id}`)}
-                className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105"
+                className="bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg p-4 sm:p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 active:scale-95"
               >
-                <h3 className="text-xl font-bold mb-4 text-center text-gray-800 truncate">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 text-center text-gray-800 truncate px-2">
                   {game.name}
                 </h3>
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   {game.slots.slice(0, 3).map((slot, index) => (
-                    <div key={index} className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-100 p-3">
-                      <div className="flex flex-wrap gap-2 items-center justify-center">
-                        {slot.slice(0, 3).map((value, valueIndex) => (
-                          <span key={valueIndex} className="px-2 py-1 bg-white rounded-md text-sm">
+                    <div key={index} className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-md sm:rounded-lg border border-indigo-100 p-2 sm:p-3">
+                      <div className="flex flex-wrap gap-1 sm:gap-2 items-center justify-center">
+                        {slot.slice(0, 2).map((value, valueIndex) => (
+                          <span key={valueIndex} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white rounded text-xs sm:text-sm truncate max-w-full">
                             {value}
                           </span>
                         ))}
-                        {slot.length > 3 && (
-                          <span className="text-xs text-gray-500">+{slot.length - 3}</span>
+                        {slot.length > 2 && (
+                          <span className="text-xs sm:text-sm text-gray-500 px-2">+{slot.length - 2}</span>
                         )}
                       </div>
                     </div>
                   ))}
                   {game.slots.length > 3 && (
-                    <div className="text-center text-sm text-gray-500 pt-2">
+                    <div className="text-center text-xs sm:text-sm text-gray-500 pt-1 sm:pt-2">
                       +{game.slots.length - 3} more slots
                     </div>
                   )}
                 </div>
-                <button className="w-full mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-full font-semibold hover:opacity-90 transition-all">
+                <button className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:opacity-90 transition-all">
                   Play Now
                 </button>
               </div>
