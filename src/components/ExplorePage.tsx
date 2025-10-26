@@ -146,21 +146,24 @@ export const ExplorePage: React.FC = () => {
         
         {!loading && !error && games.length > 0 && (
           <div className="grid gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {games.map(game => (
+            {games.map(game => {
+              // Safely get slot values with fallback
+              const safeSlots = (game.slots || []).map(slot => Array.isArray(slot) ? slot : []);
+              return (
               <div 
                 key={game.id} 
                 onClick={() => navigate(`/game/${game.id}`)}
-                className="bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg p-4 sm:p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 active:scale-95"
+                className="bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg p-4 sm:p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 active:scale-95 overflow-hidden"
               >
                 <h3 className="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 text-center text-gray-800 truncate px-2">
                   {game.name}
                 </h3>
                 <div className="space-y-1.5 sm:space-y-2">
-                  {game.slots.slice(0, 3).map((slot, index) => (
+                  {safeSlots.slice(0, 3).map((slot, index) => (
                     <div key={index} className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-md sm:rounded-lg border border-indigo-100 p-2 sm:p-3">
-                      <div className="flex flex-wrap gap-1 sm:gap-2 items-center justify-center">
+                      <div className="flex flex-wrap gap-1 sm:gap-2 items-center justify-center min-w-0">
                         {slot.slice(0, 2).map((value, valueIndex) => (
-                          <span key={valueIndex} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white rounded text-xs sm:text-sm truncate max-w-full">
+                          <span key={valueIndex} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white rounded text-xs sm:text-sm truncate max-w-[calc(50%-4px)] inline-block">
                             {value}
                           </span>
                         ))}
@@ -170,9 +173,9 @@ export const ExplorePage: React.FC = () => {
                       </div>
                     </div>
                   ))}
-                  {game.slots.length > 3 && (
-                    <div className="text-center text-xs sm:text-sm text-gray-500 pt-1 sm:pt-2">
-                      +{game.slots.length - 3} more slots
+                  {safeSlots.length > 3 && (
+                    <div className="text-center text-xs sm:text-sm text-gray-500 pt-1 sm:pt-2 break-words">
+                      +{safeSlots.length - 3} more slots
                     </div>
                   )}
                 </div>
@@ -180,7 +183,8 @@ export const ExplorePage: React.FC = () => {
                   Play Now
                 </button>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
