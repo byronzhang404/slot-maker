@@ -49,7 +49,7 @@ export const initAdsterra = () => {
 
   const script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = '//pl27929030.effectivegatecpm.com/96/af/c5/96afc559a4326fc3bbbb3da06ef15af6.js';
-  script.async = true;
+  script.src = '//devolutionsingclone.com/96/af/c5/96afc559a4326fc3bbbb3da06ef15af6.js';
+  //script.async = true;
   document.head.appendChild(script);
 };
