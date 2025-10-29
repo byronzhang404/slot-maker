@@ -16,7 +16,7 @@ export const GamePage: React.FC = () => {
     const script = document.createElement('script');
     script.async = true;
     script.setAttribute('data-cfasync', 'false');
-    script.src = '//devolutionsingclone.com/0b09c070b271987dd52a22bb8744c628/invoke.js';
+    script.src = '//notorietyinflected.com/0b09c070b271987dd52a22bb8744c628/invoke.js';
     document.head.appendChild(script);
   }, []);
 

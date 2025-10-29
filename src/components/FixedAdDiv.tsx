@@ -26,7 +26,7 @@ export const FixedAdDiv: React.FC = () => {
     // External invoke script
     const invokeScript = document.createElement('script');
     invokeScript.type = 'text/javascript';
-    invokeScript.src = '//devolutionsingclone.com/168d33916847e6fc4c8bc6977e3d9e00/invoke.js';
+    invokeScript.src = '//notorietyinflected.com/168d33916847e6fc4c8bc6977e3d9e00/invoke.js';
 
     container.appendChild(optionsScript);
     container.appendChild(invokeScript);
